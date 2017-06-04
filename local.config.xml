@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+Here you can find general config
+Great Quotes:
+    " When I wrote this, only God and I understood what I was doing
+      Now, God only knows "
+
+Change it to your local or something like this.
+!!! If site url is .com then language must by en or if url is .ru then language is ru !!!
+Language can be ru/en
+-->
+
+<settings>
+    <language>ru</language>
+    <default-project-url>http://stable.test.www.roboforex.ru/</default-project-url>
+    <account-project-url>https://999.md/ru/</account-project-url>
+    <admin-project-url>http://stable.test.my.roboforex.ru/admin123/</admin-project-url>
+    <mobile-project-url>http://stable.test.m.roboforex.com/</mobile-project-url>
+    <support-project-url>http://support.robofx.com/staff/</support-project-url>
+    <admin-username>admin</admin-username>
+    <admin-password>!!qaz67df</admin-password>
+    <support-username>andrey_dev</support-username>
+    <support-password>qaz123</support-password>
+    <production-email>roboftest31@gmail.com</production-email>
+    <production-password>Chiriac1</production-password>
+    <production-tradingAccountId>144305</production-tradingAccountId>
+</settings>

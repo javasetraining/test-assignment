@@ -15,20 +15,11 @@ import static org.junit.Assert.assertTrue;
 public class InitialTest {
 
     @Test
-    public void diverIsTheKing() {
-        WebDriver driver = new HtmlUnitDriver();
-        driver.get("https://yandex.ru/");
-        assertTrue(driver.getTitle().startsWith("Яндекс"));
-    }
-
-    @Test
     public void testGoogleSearch() throws InterruptedException {
-        final String s = System.setProperty("webdriver.chrome.driver", "C:\\Users\\Code\\Downloads\\Selenium\\chromedriver.exe");
-
+        final String s = System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://www.google.com/xhtml");
-
         Thread.sleep(5000);  // Let the user actually see something!
         WebElement searchBox = driver.findElement(By.name("q"));
         searchBox.sendKeys("ChromeDriver");
