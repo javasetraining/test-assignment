@@ -11,7 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.common.TestBase;
+
 import java.util.List;
+
 import static junit.framework.TestCase.assertFalse;
 
 
@@ -41,15 +43,15 @@ public class FirstTest extends TestBase {
         System.out.println(tvModelNamne);
     }
 
-    private void countAndVerifyElementsOnThePage() throws InterruptedException {
+    public void countAndVerifyElementsOnThePage() throws InterruptedException {
         List<WebElement> items = driver.findElements(By.cssSelector(".snippet-card__header-text"));
         int elementsCount = items.size();
         System.out.println("на странице " + elementsCount + " элементов");
-  //      System.out.println("первый элемент" + items.get(0));
+        //      System.out.println("первый элемент" + items.get(0));
         List<WebElement> itemsXpath = driver.findElements(By.xpath("//SPAN[@class='snippet-card__header-text']"));
         System.out.println(itemsXpath.get(0).getText());
         String firstTVmodelName = itemsXpath.get(0).getText();
-   //    System.out.println("first element" + firstLIstElement);
+        //    System.out.println("first element" + firstLIstElement);
         int elementsOnPage = 12;  // on page should be 12 elements by default
         Assert.assertEquals("Число елементов не соответсвует 12-ти", elementsOnPage, elementsCount); //assert for element count
 
@@ -60,8 +62,8 @@ public class FirstTest extends TestBase {
 
     }
 
-    private void pushTheApplyButton() {
-    driver.findElement(By.className("n-filter-panel-aside__apply")).click();
+    public void pushTheApplyButton() {
+        driver.findElement(By.className("n-filter-panel-aside__apply")).click();
     }
 
 
@@ -74,25 +76,36 @@ public class FirstTest extends TestBase {
         //LABEL[@class='checkbox__label'][text()='Samsung']
     }
 
-    private void selectTvModel(String tvModel) {
+    public void searchIfNotHiddenAndSelect(String checkBox) {
+        String checkBoxselected = ("//LABEL[@class='checkbox__label'][text()='" + checkBox + "']");
+        Boolean isPresent = driver.findElements(By.linkText(checkBox)).size() > 0;
+        if (isPresent) {
+            driver.findElement(By.xpath(checkBoxselected)).click();
+        } else {
+            driver.findElement(By.linkText("Ещё")).click();
+            driver.findElement(By.xpath(checkBoxselected)).click();
+        }
+    }
+
+    public void selectTvModel(String tvModel) {
         String checkBoxselected = ("//LABEL[@class='checkbox__label'][text()='" + tvModel + "']");
         driver.findElement(By.xpath(checkBoxselected)).click();
     }
 
-    private void setPriceToNeeded(int price) throws InterruptedException {
+    public void setPriceToNeeded(int price) throws InterruptedException {
         driver.findElement(By.xpath(".//*[@id='glf-pricefrom-var']")).sendKeys(String.valueOf(price));
     }
 
-    private void selectSecrion(String s) {
+    protected void selectSecrion(String s) {
         driver.findElement(By.linkText(s)).click();
     }
 
-    private void switchToYandexMarketTab() {
+    protected void switchToYandexMarketTab() {
         WebElement marketTab = By.xpath("html/body/div[1]/div[3]/div/div[2]/div/div[2]/div/div[1]/div/a[2]").findElement(driver);
         marketTab.click();
     }
 
-    private void sweetchToElectronicks() {
+    protected void sweetchToElectronicks() {
         driver.findElement(By.linkText("Электроника")).click();
     }
 
